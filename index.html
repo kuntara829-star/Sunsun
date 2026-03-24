@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kado Spesial Untukmu ❤️</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(180deg, #ffe1ee, #fff2f7, #ffffff);
+        overflow-x: hidden;
+        text-align: center;
+    }
+    .gift-box {
+        margin-top: 120px;
+        width: 200px;
+        cursor: pointer;
+        transition: 0.4s ease;
+        animation: float 3s ease-in-out infinite;
+    }
+    .gift-box:hover { transform: scale(1.07); }
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-15px); }
+        100% { transform: translateY(0px); }
+    }
+    .bouquet {
+        width: 240px;
+        opacity: 0;
+        margin-top: -20px;
+        transform: scale(0.5);
+        transition: 1.8s ease;
+    }
+    .bouquet.show { opacity: 1; transform: scale(1); }
+    .letter {
+        opacity: 0;
+        transform: translateY(40px) scale(0.9);
+        background: white;
+        margin: 25px auto;
+        padding: 22px 18px;
+        width: 90%;
+        max-width: 460px;
+        border-radius: 14px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        transition: 1.4s ease;
+    }
+    .letter.show { opacity: 1; transform: translateY(0px) scale(1); }
+    .letter h2 { margin-top: 0; color: #d63384; font-size: 22px; }
+    .message {
+        font-size: 17px;
+        color: #444;
+        padding-top: 8px;
+        white-space: pre-line;
+    }
+    .petal {
+        position: fixed;
+        top: -10px;
+        pointer-events: none;
+        font-size: 24px;
+        opacity: 0.9;
+        animation: fall linear infinite;
+        color: #ff7aa8;
+    }
+    @keyframes fall {
+        0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+        100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+</style>
+</head>
+<body>
+
+<img id="giftBox" class="gift-box" src="https://i.imgur.com/5NQFj1k.png" onclick="openGift()">
+<img id="bouquet" class="bouquet" src="https://i.imgur.com/4ZQZ5hT.png">
+
+<div id="letter" class="letter">
+    <h2>Untuk Clarissa Aveline Putri Herdian 💖</h2>
+    <div class="message" id="displayText">
+Kamu ingin tahu perasaanku kepadamu?
+Kamu masih ingat kan tentang kalimat yang sering diucapkan di film sore.
+
+Iyaa... perasaanku kepadamu seperti itu bebeb.
+
+Mau diulang ratusan kali, bahkan ribuan kali...
+
+Aku akan tetap memilih kamu, sebagai pendamping hidupku. ❤️
+    </div>
+</div>
+
+<audio id="music">
+    <source src="https://www2.cs.uic.edu/~i101/SoundFiles/StarWars60.wav">
+</audio>
+
+<script>
+function openGift() {
+    document.getElementById("giftBox").style.display = "none";
+    document.getElementById("bouquet").classList.add("show");
+    setTimeout(() => {
+        document.getElementById("letter").classList.add("show");
+    }, 900);
+
+    const music = document.getElementById("music");
+    music.volume = 0.5;
+    music.play();
+
+    for (let i = 0; i < 25; i++) {
+        let petal = document.createElement("div");
+        petal.classList.add("petal");
+        petal.innerHTML = "🌸";
+        petal.style.left = Math.random() * 100 + "vw";
+        petal.style.animationDuration = (3 + Math.random() * 3) + "s";
+        document.body.appendChild(petal);
+        setTimeout(() => { petal.remove(); }, 6000);
+    }
+}
+</script>
+
+</body>
+</html>
